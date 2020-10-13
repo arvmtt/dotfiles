@@ -1,0 +1,66 @@
+
+#   alacritty
+#   @arvmtt
+
+# Fonts
+font:
+  size: 14
+
+  # The normal (roman) font face to use.
+  normal:
+    family: Iosevka
+    # Style can be specified to pick a specific face.
+    style: Regular
+
+  # The bold font face
+  bold:
+    family: Iosevka
+    style: Bold
+
+  # The italic font face
+  italic:
+    family: Iosevka
+    style: Italic
+
+# Colors (Nord)
+colors:
+   primary:
+     background: '#0F1A20'
+     foreground: '#AEA47A'
+
+   # Normal colors
+   normal:
+     black:   '#202020'
+     red:     '#810009'
+     green:   '#48513B'
+     yellow:  '#CC8B3F'
+     blue:    '#576D8C'
+     magenta: '#724D7C'
+     cyan:    '#5C4F4B'
+     white:   '#AEA47F'
+
+   # Bright colors
+   bright:
+     black:   '#555555'
+     red:     '#AC3835'
+     green:   '#A6A75D'
+     yellow:  '#DCDF7C'
+     blue:    '#3097C6'
+     magenta: '#D33061'
+     cyan:    '#F3DBB2'
+     white:   '#F4F4F4'
+ 
+# Window
+window:  
+  # Window padding (changes require restart)
+  # Blank space added around the window in pixels. This padding is scaled
+  # by DPI and the specified value is always added at both opposing sides.
+  padding:
+    x: 8
+    y: 8
+
+
+# Background opacity
+# Window opacity as a floating point number from `0.0` to `1.0`.
+# The value `0.0` is completely transparent and `1.0` is opaque.
+background_opacity: 0.95
