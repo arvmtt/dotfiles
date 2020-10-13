@@ -1,0 +1,153 @@
+;   POLYBAR CONFIGURAITON
+;   @arvmtt
+
+[colors]
+background  = #0F1A20
+
+text          = #aea47f
+text_accent   = #724D7C
+
+black         = #202228
+green         = #8099C794
+yellow        = #FAC863
+red           = #EC5F67
+white_opacity = #80D8DEE9
+
+[bars]
+height  = 22
+
+;; bar: workspaces
+[bar/main]
+width   = 100%
+height  = ${bars.height}
+
+padding = 1
+border-top-size = 4
+border-right-size = 8
+border-left-size = 8
+
+font-0 = Iosevka:size=13;4
+font-1 = Iosevka:size=13:weight=Bold;4
+font-2 = Iosevka:size=13:style=Italic;4
+
+background  = ${colors.background}
+
+fixed-center = true
+
+modules-left    = bspwm mpd
+modules-center  =
+modules-right	  = audio keyboard network time
+
+;; module: TIME
+[module/time]
+type      = internal/date
+interval  = 2.0
+time      = %H:%M
+time-alt  = %H:%M%
+date      =
+date-alt  = %Y-%m-%d
+label     = %time% %date%
+
+format-foreground = ${colors.text}
+label-padding-left= 1
+
+;; module: AUDIO
+[module/audio]
+type      = internal/pulseaudio
+interval  = 5
+
+label-volume            = vol: %percentage%%
+label-volume-foreground = ${colors.text}
+label-volume-padding    = 1
+
+label-muted             = vol: mtd 
+label-muted-foreground  = ${colors.text_accent}
+label-muted-padding     = 1
+
+;; module: KEYBOARD
+[module/keyboard]
+type = internal/xkeyboard
+
+format = <label-layout> <label-indicator>
+
+label-layout  = %icon%
+label-layout-foreground = ${colors.text}
+
+layout-icon-default = LANG
+layout-icon-0 = us;US
+layout-icon-1 = se;SE
+
+label-indicator-foreground = ${colors.text}
+
+; List of indicators to ignore
+blacklist-0 = num lock
+blacklist-1 = scroll lock
+
+;; module: mpd
+[module/mpd]
+type = internal/mpd
+
+host  = 127.0.0.1
+port  = 6600
+
+interval = 2
+
+format-online = <label-song> <bar-progress>
+
+label-song = %artist% - %title%
+label-song-padding    = 1
+label-song-foreground = ${colors.text}
+label-song-font       = 3
+
+bar-progress-width = 12
+bar-progress-indicator = >
+bar-progress-fill = -
+bar-progress-empty = -
+bar-progress-indicator-foreground = ${colors.text}
+bar-progress-fill-foreground = ${colors.text_accent}
+bar-progress-empty-foreground = ${colors.text_accent}
+
+;; module: bspwm
+[module/bspwm]
+type = internal/bspwm
+
+; show tiling mode
+; format  = <label-mode> <label-state>
+
+label-monocle = mono
+label-monocle-foreground = ${colors.text}
+label-tiled = tile
+label-tiled-foreground = ${colors.text}
+label-floating = float
+label-floating-foreground = ${colors.text}
+
+label-focused             = %index%
+label-focused-foreground  = ${colors.text_accent}
+label-focused-font        = 1
+label-focused-padding     = 1
+
+label-occupied              = %index%
+label-occupied-foreground   = ${colors.text}
+label-occupied-padding      = 1
+
+label-urgent            = %index%
+label-urgent-foreground = ${colors.text_accent}
+label-urgent-background = ${colors.red}
+label-urgent-padding    = 1
+
+; hide empty workspaces
+label-empty =
+
+;; network
+[module/network]
+type = internal/network
+
+; find interface with: ip link
+interface = enp0s31f6
+
+format-connected = <label-connected>
+label-connected = UP
+label-connected-foreground = ${colors.text_accent}
+
+label-disconnected = DOWN
+label-disconnected-foreground = ${colors.text}
